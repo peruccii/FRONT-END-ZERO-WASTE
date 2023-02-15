@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      
+      src="https://kit.fontawesome.com/b4e9d6f03e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>ella</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="#" class="sign-in-form">
+            <img class="logoo" src="/tela_inicial_atualizado1-main/img/logo-removebg-preview.png" alt="logo">
+            <h2 class="title">Entrar</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <input type="submit" value="Entrar" class="btn solid" />
+           
+          </form>
+          <form action="#" class="sign-up-form">
+            <img class="logoo" src="/tela_inicial_atualizado1-main/img/logo-removebg-preview.png" alt="logo">
+            <h2 class="title">Registrar-se</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" id="username" placeholder="Nome" onchange="toggleButton()" />
+            </div>
+            <div class="input-field">
+              <i class="fa-solid fa-phone"></i>
+              <input type="number" id="telefone" placeholder="Telefone"  />
+            </div>
+
+
+            <div class="actionBtns">
+              <button class="actionBtn signupBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')" >Pessoa Juridica</button>
+               <button class="actionBtn loginBtn" onclick="removercpfcnpj('adicionar_CPFCNPJ')">Pessoa Fisica</button>
+               <button class="actionBtn moveBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')">Pessoa Juridica</button>
+            </div>
+
+
+            <div class="input-field" id="adicionar_CPFCNPJ" >
+              <i class="fa-solid fa-file" id="icone_cpfcnpj"></i>
+              <input type="number" placeholder = "CNPJ" id="text_cpfcnpj"/>
+            </div>
+            
+            <div class="input-field">
+              <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email"  />
+              </div>
+              <div class="input-field">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="number" id="cep" placeholder="CEP"  />
+                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" class="consultacep">Consultar CEP</a>
+              </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password"  id="senha" placeholder="Senha" onchange="toggleButton()" />
+            </div>
+            
+            <div class="select-btn" id="adicionar_material"   >
+              <i class="fa-solid fa-recycle" id="icone_material"></i>
+                <span class="btn-text">Materiais que eu recolho</span>
+                <span class="arrow-dwn">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </span>
+            </div>
+            
+
+            <ul class="list-items">
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Plasticos</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Metais</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Papeis</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Vidros</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Pilhas e baterias</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">exemplo</span>
+              </li>
+              <li class="item">
+                <span class="checkbox">
+                    <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">exemplo</span>
+            </li>
+            <li class="item">
+              <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+              </span>
+              <span class="item-text">exemplo</span>
+          </li>
+          </ul>
+         
+            <div class="divbotao">
+              <input type="submit" onclick="adicionarmaterial('adicionar_material')" class="btnescolha" id="btn-catador"  value="Catador(a)" />
+              <input type="submit" onclick="removermaterial('adicionar_material')" class="btnescolha"  id="btn-gerador" value="Gerador de residuo" />
+            </div>
+           
+            <input type="submit" class="btn" id="registerbtn" disabled value="Registrar"  />
+          
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>É novo por aqui ?</h3>
+            <p>
+              Cadastra-se para participar de uma nova inovação no mundo para salvar nosso planeta.
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Registra-se
+            </button>
+          </div>
+          <img src="img/cadastro3-removebg-preview.png" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Ja faz parte da nossa comunidade ?</h3>
+            <p>
+              Faça login em sua conta e continue nos ajudando a salvar o planeta.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Entrar
+            </button>
+          </div>
+          <img src="img/login2boneco.png" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
