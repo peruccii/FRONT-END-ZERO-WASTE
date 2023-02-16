@@ -3,12 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      
-      src="https://kit.fontawesome.com/b4e9d6f03e.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/b4e9d6f03e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./style.css" />
     <title>ella</title>
   </head>
   <body>
@@ -20,11 +17,11 @@
             <h2 class="title">Entrar</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Nome" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Senha" />
             </div>
             <input type="submit" value="Entrar" class="btn solid" />
            
@@ -43,9 +40,9 @@
 
 
             <div class="actionBtns">
-              <button class="actionBtn signupBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')" >Pessoa Juridica</button>
-               <button class="actionBtn loginBtn" onclick="removercpfcnpj('adicionar_CPFCNPJ')">Pessoa Fisica</button>
-               <button class="actionBtn moveBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')">Pessoa Juridica</button>
+              <button class="actionBtn signupBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')" type="button" >Pessoa Juridica</button>
+               <button class="actionBtn loginBtn" onclick="removercpfcnpj('adicionar_CPFCNPJ')" type="button">Pessoa Fisica</button>
+               <button class="actionBtn moveBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')" type="button">Pessoa Juridica</button>
             </div>
 
 
@@ -129,8 +126,8 @@
           </ul>
          
             <div class="divbotao">
-              <input type="submit" onclick="adicionarmaterial('adicionar_material')" class="btnescolha" id="btn-catador"  value="Catador(a)" />
-              <input type="submit" onclick="removermaterial('adicionar_material')" class="btnescolha"  id="btn-gerador" value="Gerador de residuo" />
+              <button type="button" onclick="adicionarmaterial('adicionar_material')" class="btnescolha" id="btn-catador"  value="Catador(a)">Catador(a)</button> 
+              <button type="button" onclick="removermaterial('adicionar_material')" class="btnescolha"  id="btn-gerador" value="Gerador de residuo">Gerador de residuo</button>
             </div>
            
             <input type="submit" class="btn" id="registerbtn" disabled value="Registrar"  />
@@ -162,7 +159,7 @@
               Entrar
             </button>
           </div>
-          <img src="img/login2boneco.png" class="image" alt="" />
+          <img src="img/login2boneco.png" class="image"  id="image" alt="" />
         </div>
       </div>
     </div>

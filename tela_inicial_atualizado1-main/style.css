@@ -1,21 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
 }
-
-
-body{
-  overflow-x: hidden;
-}
-
 
 body,
 input {
+
   font-family: "Poppins", sans-serif;
+  -moz-appearance: textfield;
 }
+
+
 
 .container {
   
@@ -162,13 +159,7 @@ form.sign-in-form {
 }
 
 
-.btn:disabled {
-  opacity: .4;
-  cursor: default;
-}
-.btn:disabled:hover {
-  background-color: #6cef48;
-}
+
 
 .btnescolha{
   width: 180px;
@@ -189,21 +180,6 @@ form.sign-in-form {
 .btnescolha:hover{
   background-color: #58d61d;
 }
-
-/*.input-fieldhiddden{
-
-  max-width: 380px;
-  width: 100%;
-  background-color: #f0f0f0;
-  margin: 10px 0;
-  height: 55px;
-  border-radius: 55px;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  padding: 0 0.4rem;
-  position: relative;
-  display: none;
-}*/
 
 .personalizar{
   max-width: 380px;
@@ -234,7 +210,6 @@ form.sign-in-form {
   padding-top: 4px;
  
 }
-
 
 .select-btn{
   max-width: 380px;
@@ -529,6 +504,8 @@ form.sign-in-form {
   transform: translateX(-800px);
 }
 
+
+
 .container.sign-up-mode .signin-signup {
   left: 25%;
 }
@@ -575,8 +552,11 @@ form.sign-in-form {
 
   .panels-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+
   }
+
+  
 
   .panel {
     flex-direction: row;
@@ -587,7 +567,8 @@ form.sign-in-form {
   }
 
   .right-panel {
-    grid-row: 3 / 4;
+    position: absolute;
+    bottom: 0;
   }
 
   .left-panel {
@@ -659,34 +640,9 @@ form.sign-in-form {
   }
 }
 
-@media (max-width: 570px) {
-  form {
-    padding: 0 1.5rem;
-    margin-top: -70px;
-  }
 
-  .image {
-    display: none;
-  }
-  .panel .content {
-    padding: 0.5rem 1rem;
-  }
-  .container {
-    padding: 1.5rem;
-  }
 
-  .container:before {
-    bottom: 72%;
-    left: 50%;
-  }
 
-  .container.sign-up-mode:before {
-    bottom: 28%;
-    left: 50%;
-  }
-
-  
-}
 
 
 /* switch */
@@ -735,4 +691,93 @@ width: 50%;
 .rightBtn{
   transform: translateX(98%);
   transition: all 0.7s ease-in-out;
+}
+
+
+
+@media (min-width: 2000px){
+  .actionBtns{
+    width: 33.8%;
+    background-color: green;
+    
+  }
+
+  .container.sign-up-mode:before {
+    transform: translate(100%, -40%);
+    right: 54%;
+  }
+
+  
+  
+  .container.sign-up-mode .left-panel .image,
+  .container.sign-up-mode .left-panel .content {
+    transform: translateX(-1100px);
+  }
+
+  .panel .content h3{
+    font-size: 2.0rem;
+  
+}
+
+
+
+ .image{
+   max-height: 90%;
+   transform: translateY(-10%);
+   
+ }
+
+ .right-panel .image,
+.right-panel .content {
+  transform: translateX(900px);
+}
+
+}
+
+
+@media (max-width: 570px) {
+  form {
+    padding: 0 1.5rem;
+    transform: translateY(10%);
+  }
+
+  .actionBtns{
+    width: 100%;
+    background-color: green;
+    
+  }
+
+  .image {
+    display: none;
+  }
+  .right-panel .content  {
+    margin-bottom: -180%;
+    
+  }
+
+  .panel .content  {
+    padding: 1.5rem 1rem;
+  
+    
+  }
+  .container .sign-up-mode .forms-container {
+   transform: translateY(-20%);
+   background-color: #333;
+  }
+
+
+
+
+  .container:before {
+    bottom: 72%;
+    left: 50%;
+  }
+
+  .container.sign-up-mode:before {
+    bottom: -10%;
+    left: 50%;
+    
+  }
+
+  
 }
