@@ -60,16 +60,7 @@ function adicionarcpfcnpj(el) {
 
 
 
-function toggleButton() {
-  const username = document.querySelector('#username').value;
-  const password = document.querySelector('#senha').value;
 
-  if (username && password) {
-    
-    return document.querySelector('#registerbtn').disabled = false;
-  }else
-  document.querySelector('#registerbtn').disabled = true;
-}
 
  
 
