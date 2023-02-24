@@ -77,11 +77,13 @@ function adicionarcpfcnpj(el) {
     remover.classList.add("desaparecer")
  }*/
 
+ const lista = document.getElementById('lista')
  const selectBtn = document.querySelector(".select-btn"),
  items = document.querySelectorAll(".item");
 
 selectBtn.addEventListener("click", () => {
 selectBtn.classList.toggle("open");
+lista.classList.toggle("open");
 });
 
 items.forEach(item => {

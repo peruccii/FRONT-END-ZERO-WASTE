@@ -6,7 +6,10 @@
     <script src="https://kit.fontawesome.com/b4e9d6f03e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./style.css" />
-    <script src="./js/register&login.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/register&login.js" type="module" defer></script>
+    <script src="./js/createMaterial.js" defer></script>
+    <script src="app.js" defer></script>
     <title>ella</title>
   </head>
   <body>
@@ -27,16 +30,16 @@
             <input type="submit" value="Entrar" class="btn solid" />
            
           </form>
-          <form action="#" class="sign-up-form">
+          <form id="form-sign-up" action="#" class="sign-up-form">
             <img class="logoo" src="./img/logo-removebg-preview.png">
             <h2 class="title">Registrar-se</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" id="username" placeholder="Nome"  />
+              <input type="text" id="username" placeholder="Nome" required />
             </div>
             <div class="input-field">
               <i class="fa-solid fa-phone"></i>
-              <input type="number" id="telefone" placeholder="Telefone"  />
+              <input type="number" id="telefone" placeholder="Telefone" required  />
             </div>
 
 
@@ -45,7 +48,7 @@
                <button class="actionBtn loginBtn" onclick="removercpfcnpj('adicionar_CPFCNPJ')" type="button">Pessoa Fisica</button>
                <button class="actionBtn moveBtn" onclick="adicionarcpfcnpj('adicionar_CPFCNPJ')" type="button">Pessoa Juridica</button>
             </div>
-
+            
 
             <div class="input-field" id="adicionar_CPFCNPJ" >
               <i class="fa-solid fa-file" id="icone_cpfcnpj"></i>
@@ -54,16 +57,27 @@
             
             <div class="input-field">
               <i class="fa-solid fa-envelope"></i>
-                <input type="email" id="email" name="email" placeholder="Email"  />
+                <input type="email" id="email" name="email" placeholder="Email" required />
               </div>
               <div class="input-field">
+                <i class="fa-solid fa-envelope"></i>
+                  <input type="date" id="nascimento" name="nascimento" placeholder="Data de nascimento" required />
+                </div>
+              <div class="input-field">
                 <i class="fa-solid fa-location-dot"></i>
-                <input type="number" id="cep" placeholder="CEP"  />
+                <input type="number" id="cep" placeholder="CEP" required />
                 <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" class="consultacep">Consultar CEP</a>
               </div>
+
+              <div class="divbotao">
+                <input type="text"  id="complemento" placeholder="Complemento"/>
+                <input type="number" id="numero" placeholder="Numero" required/>
+              </div>
+
+
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password"  id="senha" placeholder="Senha"  />
+              <input type="password"  id="senha" placeholder="Senha" required />
             </div>
             <div class="select-btn" id="adicionar_material"   >
               <i class="fa-solid fa-recycle" id="icone_material"></i>
@@ -72,7 +86,7 @@
                   <i class="fa-solid fa-chevron-down"></i>
                 </span>
             </div>
-            <ul class="list-items">
+            <ul id="lista" class="list-items">
               <li class="item">
                   <span class="checkbox">
                       <i class="fa-solid fa-check check-icon"></i>
@@ -123,10 +137,10 @@
           </li>
           </ul>
           <div class="divbotao">
-              <button type="button" onclick="adicionarmaterial('adicionar_material')" class="btnescolha" id="btn-catador"  value="Catador(a)">Catador(a)</button> 
+              <button type="button"  onclick="adicionarmaterial('adicionar_material')" class="btnescolha" id="btn-catador"  value="Catador(a)">Catador(a)</button> 
               <button type="button" onclick="removermaterial('adicionar_material')" class="btnescolha"  id="btn-gerador" value="Gerador de residuo">Gerador de residuo</button>
             </div>
-            <input type="submit" class="btn" id="registerbtn"  value="Registrar"  />
+            <input type="button" class="btn" id="registerbtn"  value="Registrar" >
           </form>
         </div>
       </div>
@@ -157,6 +171,5 @@
         </div>
       </div>
     </div>
-    <script src="app.js"></script>
   </body>
 </html>

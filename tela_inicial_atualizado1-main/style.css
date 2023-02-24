@@ -311,9 +311,14 @@ form.sign-in-form {
   width: 380px;
   transition: 0.9s;
 }
-.select-btn.open ~ .list-items{
+
+#lista .open{
   display: block;
   transition: 0.9s;
+}
+.select-btn.open ~ .list-items{
+  display: block;
+
 }
 .list-items .item{
   display: flex;
@@ -335,6 +340,40 @@ form.sign-in-form {
   font-weight: 400;
   color: #333;
 }
+
+.complemento{
+  color: red;
+}
+
+.divbotao input{
+  width: 190px;
+  background-color:#f0f0f0;
+  border: none;
+  outline: none;
+  height: 46px;
+  border-radius: 46px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: small;
+  padding-left: 28px;
+  color: rgb(0, 0, 0);
+
+ 
+}
+
+.divbotao input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+  font-size: small;
+}
+
+
+
+
+
 .item .checkbox{
   display: flex;
   align-items: center;
@@ -361,7 +400,7 @@ form.sign-in-form {
 }
 
 #text_cpfcnpj{
- padding-left: 23px;
+ padding-left: 4px;
 }
 
 #icone_cpfcnpj {
@@ -370,7 +409,7 @@ form.sign-in-form {
   color: #acacac;
   transition: 0.5s;
   font-size: 1.1rem;
-  padding-left: 20px;
+  padding-left: 5px;
 }
 
 
