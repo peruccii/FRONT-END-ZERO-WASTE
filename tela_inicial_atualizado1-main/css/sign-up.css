@@ -1,0 +1,56 @@
+.consultacep{
+    font-size: 0.7rem;
+    line-height: 1;
+    width: 400px;
+    padding-left: 270px;
+    padding-top: 4px;
+   
+  }
+
+.select-btn .btn-text{
+    color: #aaa;
+    font-weight: 500;
+    padding-right: 80px;
+  }
+
+  .complemento{
+    color: red;
+  }
+
+  .divbotao input{
+    width: 190px;
+    background-color:#f0f0f0;
+    border: none;
+    outline: none;
+    height: 46px;
+    border-radius: 46px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: small;
+    padding-left: 28px;
+    color: rgb(0, 0, 0);
+  }
+  #text_cpfcnpj{
+    padding-left: 4px;
+   }
+   #icone_cpfcnpj {
+     text-align: center;
+     line-height: 55px;
+     color: #acacac;
+     transition: 0.5s;
+     font-size: 1.1rem;
+     padding-left: 5px;
+   }
+   .cpfcnpj{
+     text-align: center;
+     line-height: 55px;
+     color: #acacac;
+     transition: 0.5s;
+     font-size: 1.1rem;
+   }
+   #adicionar_CPF{
+     display: none;
+   }

@@ -9,11 +9,7 @@ const a = document.querySelector("#adicionar_material")
 const b = document.querySelector(".items")
 const cpfcnpj = document.querySelector("#adicionar_CPFCNPJ")
 
-
-adicionar_material.addEventListener('click', () => {
-  window.scroll({top: window.innerHeight, behavior: "smooth"})
-})
-
+//SIGN-UP e SIGN-IN
 
 sign_up_btn.addEventListener("click", () => {
   container.classList.add("sign-up-mode");
@@ -23,59 +19,35 @@ sign_in_btn.addEventListener("click", () => {
   container.classList.remove("sign-up-mode");
 });
 
-
-
+//Materiais
 
 function removermaterial(el) {
   
   document.getElementById(el).style.display = 'none';
+
 }
+
 function adicionarmaterial(el) {
-  
+
   document.getElementById(el).style.display = 'flex';
  
- 
 } 
+
+//CPNJ/CPF
 
 function removercpfcnpj(el) {
   
   document.getElementById('text_cpfcnpj').placeholder = 'CPF';
-
   
 }
+
 function adicionarcpfcnpj(el) {
 
   document.getElementById('text_cpfcnpj').placeholder = 'CNPJ';
   
-  
- 
-
-
-  
- 
- 
 } 
-  
 
-
-
-
-
-
- 
-
-
-
- /*function adicionarmaterial() {
-    var adicionar = document.getElementById("adicionar_material")
-    adicionar.classList.add("aparecer")
-    
- }
-
- function removermaterial() {
-    var remover = document.getElementById("adicionar_material")
-    remover.classList.add("desaparecer")
- }*/
+//Dropdown
 
  const lista = document.getElementById('lista')
  const selectBtn = document.querySelector(".select-btn"),
@@ -86,20 +58,25 @@ selectBtn.classList.toggle("open");
 lista.classList.toggle("open");
 });
 
-items.forEach(item => {
-item.addEventListener("click", () => {
-   item.classList.toggle("checked");
+lista.addEventListener('click', (e) => {
+  console.log(e);
+  e.target.classList.toggle("checked")
+  if (e.target.classList == 'checkbox') {
+    e.target.parentElement.classList.toggle("checked")
+  }
 
-   let checked = document.querySelectorAll(".checked"),
+  let checked = document.querySelectorAll(".checked"),
        btnText = document.querySelector(".btn-text");
 
-       if(checked && checked.length > 0){
+      console.log(checked.length);
+
+       if(checked.length > 0){
            btnText.innerText = `${checked.length} Selecionado`;
        }else{
            btnText.innerText = "Materiais que eu recolho";
        }
-});
 })
+
 
 
 // SWITCH SCRIPT // 
@@ -118,3 +95,19 @@ signupBtn.addEventListener("click", () => {
   moveBtn.innerHTML = "Pessoa Juridica"
 })
 
+
+function success() { 
+Swal.fire(
+  'Tudo certo!',
+  'Conta criada com sucesso!',
+  'success'
+)
+}
+
+function error(){
+  Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+})
+}

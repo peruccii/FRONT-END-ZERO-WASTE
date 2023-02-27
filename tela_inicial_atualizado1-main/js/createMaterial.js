@@ -1,6 +1,3 @@
-
-
-
 const getMaterial = async() => {
     
     const url = `http://localhost:3000/materiais`

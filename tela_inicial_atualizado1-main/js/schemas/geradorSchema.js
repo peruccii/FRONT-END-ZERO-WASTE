@@ -18,3 +18,4 @@ export const geradorSchema = object({
     data_nascimento: yup.date().required(),
     cep: yup.string().required()
 })
+

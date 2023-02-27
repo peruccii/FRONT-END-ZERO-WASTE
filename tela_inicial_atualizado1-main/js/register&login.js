@@ -1,17 +1,25 @@
 const registrar = document.getElementById('registerbtn')
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const container = document.querySelector(".container");
+const input = document.querySelector("#section-material")
+const btn = document.querySelector("#btn-catador")
+const btn2 = document.querySelector("#btn-gerador")
+const hidden = document.querySelector(".input-fieldhiddden")
+const a = document.querySelector("#adicionar_material")
+const b = document.querySelector(".items")
+const cpfcnpj = document.querySelector("#adicionar_CPFCNPJ")
+
+
 
 const getEndereco = async (cep) => {
-    console.log(cep)
     const url = `https://viacep.com.br/ws/${cep}/json/`
-    console.log(url)
 
     const response = await fetch(url)
     const endereco = await response.json()
-    console.log(endereco);
 
     return endereco
 }
-
 
 
 const InsertInput = async () => {
@@ -23,17 +31,14 @@ const InsertInput = async () => {
     const senha = document.getElementById('senha').value
     const text_cpfcnpj = document.getElementById('text_cpfcnpj').value
     const complemento = document.getElementById('complemento').value
-    const numero = document.getElementById('numero').value
     const data_nacimento = document.getElementById('nascimento').value
     
 
     if(form.reportValidity()){
         const endereco = await getEndereco(cep)
-        console.log(endereco)
-        const response = await fetch(`http://localhost:3000/gerador`,{
-            method: 'POST',
-            body: JSON.stringify({
-                nome:username,
+
+        const gerador = {
+            nome:username,
                 telefone:telefone,
                 email:email,
                 cep:cep,
@@ -46,33 +51,90 @@ const InsertInput = async () => {
                     complemento: complemento
                 },
                 senha:senha,
-                cpf:text_cpfcnpj,
                 data_nascimento: `${data_nacimento}T00:00:00.200Z`
-            }),
+        }
+
+        if (document.getElementById('text_cpfcnpj').placeholder == 'CNPJ') gerador.cnpj = text_cpfcnpj
+        else gerador.cpf = text_cpfcnpj
+
+        
+        const response = await fetch(`http://localhost:3000/gerador`,{
+            method: 'POST',
+            body: JSON.stringify(gerador),
             headers: {"content-type" : "application/json"}
-
-
         })
     
         const result = await response.json()
-        console.log(result);
         return result
+
     }
-
-    
-    
-
 }
 
 
+const insertCatador = async () => {
+    const form = document.getElementById('form-sign-up')
+    const username = document.getElementById('username').value
+    const telefone = document.getElementById('telefone').value
+    const email = document.getElementById('email').value
+    const cep = document.getElementById('cep').value
+    const senha = document.getElementById('senha').value
+    const text_cpfcnpj = document.getElementById('text_cpfcnpj').value
+    const complemento = document.getElementById('complemento').value
+    const data_nacimento = document.getElementById('nascimento').value
+    const checked = document.querySelectorAll('.checked')
+    let materiais = []
+    checked.forEach(item => {
+        materiais.push(item.id)
+    })
 
+    const endereco = await getEndereco(cep)
+
+    const catador = {
+        nome:username,
+        telefone:telefone,
+        email:email,
+        cep:cep,
+        endereco: {
+            cep: cep,
+            logradouro: endereco.logradouro,
+            bairro: endereco.bairro,
+            cidade: endereco.localidade,
+            estado: endereco.uf,
+            complemento: complemento
+        },
+        materiais: materiais,
+        senha:senha,
+        data_nascimento: `${data_nacimento}T00:00:00.200Z`
+    }
+
+    if (document.getElementById('text_cpfcnpj').placeholder == 'CNPJ') catador.cnpj = text_cpfcnpj
+        else catador.cpf = text_cpfcnpj
+
+        const response = await fetch(`http://localhost:3000/catador`,{
+            method: 'POST',
+            body: JSON.stringify(catador),
+            headers: {"content-type" : "application/json"}
+        })
+    
+        const result = await response.json()
+        return result
+}
 
 document.getElementById('registerbtn').addEventListener('click',async (event) => {
 
+    let insert
     
-    
-    //localStorage.setItem('dados', event.target.textContent)
-    await InsertInput()
+    if (a.style.display == "flex") {
+        insert = await insertCatador()
+    } else{
+        insert = await InsertInput()
+    }
 
+    if (insert.statusCode == 500) {
+        error()
+    } else{
+        success()
+    }
 })
+
 

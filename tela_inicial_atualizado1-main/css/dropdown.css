@@ -1,0 +1,65 @@
+.select-btn .arrow-dwn{
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #0bc233;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+  
+  .select-btn.open .arrow-dwn{
+    transform: rotate(-180deg);
+    
+  }
+
+  .list-items{
+    position: relative;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 380px;
+    transition: 0.9s;
+  }
+  #lista .open{
+    display: block;
+    transition: 0.9s;
+  }
+
+  .select-btn.open ~ .list-items{
+    display: block;
+  
+  }
+
+  .list-items .item{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+    transition: 0.9s;
+    
+  }
+  .list-items .item:hover{
+    background-color: #e7edfe;
+  }
+  .item .item-text{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+  }
+
+  .divbotao input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+    font-size: small;
+  }
