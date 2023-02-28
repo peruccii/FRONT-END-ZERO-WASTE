@@ -22,18 +22,18 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="#" class="sign-in-form" id="sign-in-form">
             <img class="logoo" src="./img/logo-removebg-preview.png">
             <h2 class="title">Entrar</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nome" />
+              <input type="email" placeholder="Email" id="email-login" required/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Senha" />
+              <input type="password" placeholder="Senha" id="senha-login" required/>
             </div>
-            <input type="submit" value="Entrar" class="btn solid" />
+            <button type="submit" value="Entrar" class="btn solid" id="sign-in">Entrar</button>
            
           </form>
           <form id="form-sign-up" action="#" class="sign-up-form">
@@ -41,7 +41,7 @@
             <h2 class="title">Registrar-se</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" id="username" placeholder="Nome" required />
+              <input type="text" id="username" placeholder="Nome" required  />
             </div>
             <div class="input-field">
               <i class="fa-solid fa-phone"></i>
@@ -58,7 +58,7 @@
 
             <div class="input-field" id="adicionar_CPFCNPJ" >
               <i class="fa-solid fa-file" id="icone_cpfcnpj"></i>
-              <input type="number" placeholder = "CNPJ" id="text_cpfcnpj"/>
+              <input type="text" placeholder = "CNPJ" id="text_cpfcnpj" oninput="this.value = this.value.replace(/[^0-9./-]/g, '');" />
             </div>
             
             <div class="input-field">

@@ -242,7 +242,7 @@
   padding-left: 2%;
   transition: all 0.5s ease;
   z-index: 2;
-  
+ 
  
 }
 .sidebar.open ~ .home-section{
@@ -264,21 +264,20 @@
 .seção{
   position: relative;
   width: 100%;
-  min-height: 93.3vh;
+  min-height: 100vh;
   padding: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
-}
+  overflow: hidden;}
 
 .seção .circle{
   position: absolute;
-  top: 0;
+  bottom: -20px;
   right: 0;
   width: 50%;
-  bottom: 0;
-  height: 101.7%;
+  height: 90.7%;
   background: url(../img/Rectangle.png) ; 
   background-size: cover;
   background-repeat: no-repeat;
@@ -287,22 +286,6 @@
   border-top-left-radius: 140%;
 
   
-}
-
-.a{ /*header*/
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 155px;
-}
-
-.a h3 {
-  position: relative;
-  max-width: 150px;
 }
 
 .zerowastetext{

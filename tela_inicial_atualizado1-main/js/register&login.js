@@ -137,4 +137,59 @@ document.getElementById('registerbtn').addEventListener('click',async (event) =>
     }
 })
 
+const loginUser = async (data) => {
+    const url = `http://localhost:3000/user/auth`
+
+    const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {"content-type" : "application/json"}
+    })
+
+    const result = await response.json()
+
+    console.log(result);
+    return result
+}
+
+const formLogin = async () => {
+    const form = document.getElementById('sign-in-form')
+
+    if (form.reportValidity()) {
+        const email = document.getElementById('email-login').value
+        const senha = document.getElementById('senha-login').value
+
+        const login = await loginUser({email, senha})
+
+        if (login.message != 'Não autorizado') {
+            localStorage.setItem('token', login.token)
+            localStorage.setItem('id', login.user.id)
+
+            console.log(login.user.pessoa_fisica.nome);
+
+
+            if (login.user.pessoa_fisica.length == 0) {
+                localStorage.setItem('nome', login.user.pessoa_juridica[0].nome_fantasia)
+            } else{
+                localStorage.setItem('nome', login.user.pessoa_fisica[0].nome)
+            }
+            
+
+            if (login.user.catador.length != 0) {
+                localStorage.setItem('catador', true)
+            } else{
+                localStorage.setItem('catador', false)
+            }
+
+            open('../pages/HomePage.html', '_self')
+        } else{
+            error()
+        }
+
+        
+    }
+}
+
+document.getElementById('sign-in').addEventListener('click', formLogin)
+
 

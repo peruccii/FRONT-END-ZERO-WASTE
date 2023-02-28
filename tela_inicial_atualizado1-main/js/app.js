@@ -8,7 +8,40 @@ const hidden = document.querySelector(".input-fieldhiddden")
 const a = document.querySelector("#adicionar_material")
 const b = document.querySelector(".items")
 const cpfcnpj = document.querySelector("#adicionar_CPFCNPJ")
+const texto = document.getElementById('username').value
 
+function cpf(v){
+  if (v.length == 3 || v.length == 7){
+    v += '.'
+  } else if(v.length == 11){
+    v += '-'
+  } else if (v.length > 13){
+    v = v.slice(0, v.length - 1)
+  }
+  return v
+}
+
+function cnpj(v){
+  if (v.length == 2 || v.length == 6){
+    v += '.'
+  } else if(v.length == 10){
+    v += '/'
+  } else if (v.length == 15){
+    v += '-'
+  } else if (v.length > 18){
+    v = v.slice(0, v.length - 1)
+  }
+  return v
+}
+
+function allowOnlyNumbers(e) {
+  var tecla = (window.event) ? e.keyCode : e.which;
+  if ((tecla > 47 && tecla < 58)) return true;
+  else {
+      if (tecla == 8 || tecla == 0) return true;
+      else return false;
+  }
+};
 //SIGN-UP e SIGN-IN
 
 sign_up_btn.addEventListener("click", () => {
@@ -44,9 +77,21 @@ function removercpfcnpj(el) {
 function adicionarcpfcnpj(el) {
 
   document.getElementById('text_cpfcnpj').placeholder = 'CNPJ';
-  
-} 
 
+}
+
+
+document.getElementById('text_cpfcnpj').addEventListener('keypress', (e) => {
+  let value = document.getElementById('text_cpfcnpj').value;
+
+  if (document.getElementById('text_cpfcnpj').placeholder == 'CPF') {
+    document.getElementById('text_cpfcnpj').value = cpf(value)
+  } else{
+    document.getElementById('text_cpfcnpj').value = cnpj(value)
+  }
+  
+}
+)
 //Dropdown
 
  const lista = document.getElementById('lista')
