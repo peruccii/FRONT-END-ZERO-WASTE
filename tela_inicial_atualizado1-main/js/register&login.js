@@ -125,12 +125,20 @@ document.getElementById('registerbtn').addEventListener('click', async (event) =
     let insert
 
     if (a.style.display == "flex") {
+        const checked = document.querySelectorAll('.checked')
+        let materiais = []
+        checked.forEach(item => {
+            materiais.push(item.id)
+            console.log(materiais);
+        })
         insert = await insertCatador()
     } else {
         insert = await InsertInput()
     }
 
-    if (insert.statusCode == 500) {
+    console.log(insert);
+
+    if (insert.errorsResult) {
         error()
     } else {
         success()

@@ -10,25 +10,25 @@ const b = document.querySelector(".items")
 const cpfcnpj = document.querySelector("#adicionar_CPFCNPJ")
 const texto = document.getElementById('username').value
 
-function cpf(v){
-  if (v.length == 3 || v.length == 7){
+function cpf(v) {
+  if (v.length == 3 || v.length == 7) {
     v += '.'
-  } else if(v.length == 11){
+  } else if (v.length == 11) {
     v += '-'
-  } else if (v.length > 13){
+  } else if (v.length > 13) {
     v = v.slice(0, v.length - 1)
   }
   return v
 }
 
-function cnpj(v){
-  if (v.length == 2 || v.length == 6){
+function cnpj(v) {
+  if (v.length == 2 || v.length == 6) {
     v += '.'
-  } else if(v.length == 10){
+  } else if (v.length == 10) {
     v += '/'
-  } else if (v.length == 15){
+  } else if (v.length == 15) {
     v += '-'
-  } else if (v.length > 18){
+  } else if (v.length > 18) {
     v = v.slice(0, v.length - 1)
   }
   return v
@@ -38,8 +38,8 @@ function allowOnlyNumbers(e) {
   var tecla = (window.event) ? e.keyCode : e.which;
   if ((tecla > 47 && tecla < 58)) return true;
   else {
-      if (tecla == 8 || tecla == 0) return true;
-      else return false;
+    if (tecla == 8 || tecla == 0) return true;
+    else return false;
   }
 };
 //SIGN-UP e SIGN-IN
@@ -55,7 +55,7 @@ sign_in_btn.addEventListener("click", () => {
 //Materiais
 
 function removermaterial(el) {
-  
+
   document.getElementById(el).style.display = 'none';
 
 }
@@ -63,15 +63,15 @@ function removermaterial(el) {
 function adicionarmaterial(el) {
 
   document.getElementById(el).style.display = 'flex';
- 
-} 
+
+}
 
 //CPNJ/CPF
 
 function removercpfcnpj(el) {
-  
+
   document.getElementById('text_cpfcnpj').placeholder = 'CPF';
-  
+
 }
 
 function adicionarcpfcnpj(el) {
@@ -86,21 +86,21 @@ document.getElementById('text_cpfcnpj').addEventListener('keypress', (e) => {
 
   if (document.getElementById('text_cpfcnpj').placeholder == 'CPF') {
     document.getElementById('text_cpfcnpj').value = cpf(value)
-  } else{
+  } else {
     document.getElementById('text_cpfcnpj').value = cnpj(value)
   }
-  
+
 }
 )
 //Dropdown
 
- const lista = document.getElementById('lista')
- const selectBtn = document.querySelector(".select-btn"),
- items = document.querySelectorAll(".item");
+const lista = document.getElementById('lista')
+const selectBtn = document.querySelector(".select-btn"),
+  items = document.querySelectorAll(".item");
 
 selectBtn.addEventListener("click", () => {
-selectBtn.classList.toggle("open");
-lista.classList.toggle("open");
+  selectBtn.classList.toggle("open");
+  lista.classList.toggle("open");
 });
 
 lista.addEventListener('click', (e) => {
@@ -110,16 +110,16 @@ lista.addEventListener('click', (e) => {
     e.target.parentElement.classList.toggle("checked")
   }
 
-  let checked = document.querySelectorAll(".checked"),
-       btnText = document.querySelector(".btn-text");
+  let checked = document.querySelectorAll(".checked")
+  let btnText = document.querySelector(".btn-text");
 
-      console.log(checked.length);
+  console.log(checked.length);
 
-       if(checked.length > 0){
-           btnText.innerText = `${checked.length} Selecionado`;
-       }else{
-           btnText.innerText = "Materiais que eu recolho";
-       }
+  if (checked.length > 0) {
+    btnText.innerText = `${checked.length} Selecionado`;
+  } else {
+    btnText.innerText = "Materiais que eu recolho";
+  }
 })
 
 
@@ -141,18 +141,18 @@ signupBtn.addEventListener("click", () => {
 })
 
 
-function success() { 
-Swal.fire(
-  'Tudo certo!',
-  'Conta criada com sucesso!',
-  'success'
-)
+function success() {
+  Swal.fire(
+    'Tudo certo!',
+    'Conta criada com sucesso!',
+    'success'
+  )
 }
 
-function error(){
+function error() {
   Swal.fire({
-  icon: 'error',
-  title: 'Oops...',
-  text: 'Something went wrong!',
-})
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Something went wrong!',
+  })
 }
