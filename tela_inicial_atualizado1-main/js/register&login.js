@@ -32,38 +32,38 @@ const InsertInput = async () => {
     const text_cpfcnpj = document.getElementById('text_cpfcnpj').value
     const complemento = document.getElementById('complemento').value
     const data_nacimento = document.getElementById('nascimento').value
-    
 
-    if(form.reportValidity()){
+
+    if (form.reportValidity()) {
         const endereco = await getEndereco(cep)
 
         const gerador = {
-            nome:username,
-                telefone:telefone,
-                email:email,
-                cep:cep,
-                endereco: {
-                    cep: cep,
-                    logradouro: endereco.logradouro,
-                    bairro: endereco.bairro,
-                    cidade: endereco.localidade,
-                    estado: endereco.uf,
-                    complemento: complemento
-                },
-                senha:senha,
-                data_nascimento: `${data_nacimento}T00:00:00.200Z`
+            nome: username,
+            telefone: telefone,
+            email: email,
+            cep: cep,
+            endereco: {
+                cep: cep,
+                logradouro: endereco.logradouro,
+                bairro: endereco.bairro,
+                cidade: endereco.localidade,
+                estado: endereco.uf,
+                complemento: complemento
+            },
+            senha: senha,
+            data_nascimento: `${data_nacimento}T00:00:00.200Z`
         }
 
         if (document.getElementById('text_cpfcnpj').placeholder == 'CNPJ') gerador.cnpj = text_cpfcnpj
         else gerador.cpf = text_cpfcnpj
 
-        
-        const response = await fetch(`http://localhost:3000/gerador`,{
+
+        const response = await fetch(`http://localhost:3000/gerador`, {
             method: 'POST',
             body: JSON.stringify(gerador),
-            headers: {"content-type" : "application/json"}
+            headers: { "content-type": "application/json" }
         })
-    
+
         const result = await response.json()
         return result
 
@@ -90,10 +90,10 @@ const insertCatador = async () => {
     const endereco = await getEndereco(cep)
 
     const catador = {
-        nome:username,
-        telefone:telefone,
-        email:email,
-        cep:cep,
+        nome: username,
+        telefone: telefone,
+        email: email,
+        cep: cep,
         endereco: {
             cep: cep,
             logradouro: endereco.logradouro,
@@ -103,36 +103,36 @@ const insertCatador = async () => {
             complemento: complemento
         },
         materiais: materiais,
-        senha:senha,
+        senha: senha,
         data_nascimento: `${data_nacimento}T00:00:00.200Z`
     }
 
     if (document.getElementById('text_cpfcnpj').placeholder == 'CNPJ') catador.cnpj = text_cpfcnpj
-        else catador.cpf = text_cpfcnpj
+    else catador.cpf = text_cpfcnpj
 
-        const response = await fetch(`http://localhost:3000/catador`,{
-            method: 'POST',
-            body: JSON.stringify(catador),
-            headers: {"content-type" : "application/json"}
-        })
-    
-        const result = await response.json()
-        return result
+    const response = await fetch(`http://localhost:3000/catador`, {
+        method: 'POST',
+        body: JSON.stringify(catador),
+        headers: { "content-type": "application/json" }
+    })
+
+    const result = await response.json()
+    return result
 }
 
-document.getElementById('registerbtn').addEventListener('click',async (event) => {
+document.getElementById('registerbtn').addEventListener('click', async (event) => {
 
     let insert
-    
+
     if (a.style.display == "flex") {
         insert = await insertCatador()
-    } else{
+    } else {
         insert = await InsertInput()
     }
 
     if (insert.statusCode == 500) {
         error()
-    } else{
+    } else {
         success()
     }
 })
@@ -143,7 +143,7 @@ const loginUser = async (data) => {
     const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: {"content-type" : "application/json"}
+        headers: { "content-type": "application/json" }
     })
 
     const result = await response.json()
@@ -159,34 +159,32 @@ const formLogin = async () => {
         const email = document.getElementById('email-login').value
         const senha = document.getElementById('senha-login').value
 
-        const login = await loginUser({email, senha})
+        const login = await loginUser({ email, senha })
 
         if (login.message != 'Não autorizado') {
             localStorage.setItem('token', login.token)
             localStorage.setItem('id', login.user.id)
 
-            console.log(login.user.pessoa_fisica.nome);
-
 
             if (login.user.pessoa_fisica.length == 0) {
                 localStorage.setItem('nome', login.user.pessoa_juridica[0].nome_fantasia)
-            } else{
+            } else {
                 localStorage.setItem('nome', login.user.pessoa_fisica[0].nome)
             }
-            
+
 
             if (login.user.catador.length != 0) {
                 localStorage.setItem('catador', true)
-            } else{
+            } else {
                 localStorage.setItem('catador', false)
             }
 
-            open('../pages/HomePage.html', '_self')
-        } else{
+            open('../tela_inicial_atualizado1-main/pages/home_page.html', '_self')
+        } else {
             error()
         }
 
-        
+
     }
 }
 
